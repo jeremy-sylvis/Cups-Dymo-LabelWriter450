@@ -1,7 +1,7 @@
-FROM debian:bullseye
+FROM debian:bookworm
 
 # Install dependencies
-RUN apt-get clean  && apt-get update && apt-get install -y \
+RUN apt-get clean && apt-get update && apt-get install -y \
     sudo \
     whois \
     usbutils \
