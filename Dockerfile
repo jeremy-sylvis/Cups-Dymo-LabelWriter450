@@ -26,6 +26,9 @@ RUN apt-get clean && apt-get update && apt-get install -y \
     gcc\
     g++ \
     automake \
+    avahi-daemon \
+    avahi-utils \
+    libnss-mdns \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
@@ -67,6 +70,9 @@ COPY . .
 
 ENV PRINTER_MODEL=lp450 \
     PRINTER_CUPS_DEVICE_URI=""
+
+RUN echo "Updating avahi config for dns-sd printer discovery..." \
+    sed -i -E "s#"
 
 RUN chmod +x /setup.sh
 
