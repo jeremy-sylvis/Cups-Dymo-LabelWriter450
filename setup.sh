@@ -7,9 +7,14 @@ echo "Cups Information:"
 #Print Cups Info
 lpinfo -v
 
+if [ -z "${PRINTER_CUPS_DEVICE_URI}" ]; then
+    echo "Set environment variable PRINTER_CUPS_DEVICE_URI to the correct device URI from the above output before restarting the container."
+    exit
+fi
+
 echo "Adding Printer to Cups"
 # Add the printer
-lpadmin -p dymo -v usb://DYMO/LabelWriter%20450?serial=01010112345600 -P /usr/share/cups/model/${PRINTER_MODEL}.ppd
+lpadmin -p dymo -v ${PRINTER_CUPS_DEVICE_URI} -P /usr/share/cups/model/${PRINTER_MODEL}.ppd
 
 echo "Print Cups Stats"
 # Stats
