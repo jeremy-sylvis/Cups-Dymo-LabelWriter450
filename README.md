@@ -26,7 +26,7 @@ The key parts are as follows:
 
 ### Container Image
 
-The container image is performs full installation when the container starts. 
+The container image is performs full installation when the container starts.
 
 As long as the Dymo Labelwriter 450 is accessible to the container environment, the container should immediately attach this printer to CUPS and set it to the default printer.
 
