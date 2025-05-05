@@ -1,5 +1,7 @@
 FROM debian:bookworm
 
+ARG DEBIAN_FRONTEND="noninteractive"
+
 # Install dependencies
 RUN apt-get clean && apt-get update && apt-get install -y \
     sudo \
