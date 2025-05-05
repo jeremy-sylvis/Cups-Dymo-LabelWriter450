@@ -65,7 +65,8 @@ COPY --chown=root:lp cupsd.conf /etc/cups/cupsd.conf
 
 COPY . .
 
-ENV PRINTER_MODEL=lp450
+ENV PRINTER_MODEL=lp450 \
+    PRINTER_CUPS_DEVICE_URI=""
 
 RUN chmod +x /setup.sh
 
