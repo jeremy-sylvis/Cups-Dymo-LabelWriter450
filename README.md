@@ -50,13 +50,12 @@ The best way to installing this is to use the included [dockerfile](Dockerfile),
 docker ps
 ```
 
-## Continuous Integration Pipelines
+## Build and Deploy
 
 Within this repository, there are two workflows:
 
-- Static Analysis: This performs Linting on all the main filetypes of this repository such as Dockerfiles, Markdown files and Shell Scripts.
-
-- Build: This performs the building of the Docker Image ensuring that it can be built. This is done using a Self-hosted GitHub Runner.
+- [Static Analysis.yaml](.github/workflows/Static%20Analysis.yaml): This performs Linting on all the main filetypes of this repository such as Dockerfiles, Markdown files and Shell Scripts.
+- [ci.yaml](.github/workflows/ci.yaml): Builds the container image for arm64 and amd64 hosts then pushes it to Docker Hub.
 
 ## Useful Links
 
