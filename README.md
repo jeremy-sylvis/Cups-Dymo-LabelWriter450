@@ -1,38 +1,40 @@
-# Cups_Dymo-450
+# Overview
 
-[![Static-Analysis](https://github.com/ScottGibb/Cups_Dymo-450/actions/workflows/Static%20Analysis.yaml/badge.svg)](https://github.com/ScottGibb/Cups_Dymo-450/actions/workflows/Static%20Analysis.yaml)
-[![Build](https://github.com/ScottGibb/Cups_Dymo-450/actions/workflows/Build.yaml/badge.svg)](https://github.com/ScottGibb/Cups_Dymo-450/actions/workflows/Build.yaml)
+[![Static-Analysis](https://github.com/jeremy-sylvis/Cups_Dymo-LabelWriter450/actions/workflows/Static%20Analysis.yaml/badge.svg)](https://github.com/jeremy-sylvis/Cups_Dymo-LabelWriter450/actions/workflows/Static%20Analysis.yaml)
+[![Build](https://github.com/jeremy-sylvis/Cups_Dymo-LabelWriter450/actions/workflows/Build.yaml/badge.svg)](https://github.com/jeremy-sylvis/Cups_Dymo-LabelWriter450/actions/workflows/Build.yaml)
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
-<center>
-<img src= "docs/Languages And Tools.png">
-</center>
+![Languages and Tools](docs/Languages%20And%20Tools.png)
 
-## Summary
+## This Product
 
-This repository contains a Dockerfile which runs CUPS on Raspberry Pi. This project was aimed at making the Dymo LabelWriter 450 Wireless by adding a Raspberry Pi Zero to the setup.
+This product makes the Dymo LabelWriter 450 available as a network printer by configuring and exposing a CUPS print server via container, complete with drivers for consuming devices.
 
-## Architecture
+### Solution Design
 
-The architecture of this project is as follows:
+This is the high-level design of the solution provided by this container image:
 
-<center>
-<img src= "docs/Architecture.png">
-</center>
+![Architecture diagram](docs/Architecture.png)
 
 The key parts are as follows:
 
-- Raspberry Pi Zero W: Responsible for running CUPS and the Dymo LabelWriter 450 Drivers inside a Docker container.
+- Container host (e.g. Raspberry Pi Zero W): Runs the container image which provides a CUPS-based print server.
 
-- Dymo LabelWriter 450: The printer is connected to the Raspberry Pi Zero W via USB.
+- Dymo LabelWriter 450: The printer being made available via network, connected to the container host via USB.
 
-- PC: The PC is connected to the Local Area Network. This is where the user will be printing from.
+- Print client (e.g. Windows or Linux PC): Print clients connect to the container host via LAN.
 
-The container is designed so that the full installation is done as soon as the container is started. As long as the USB Cable is plugged into the printer, the container should immediately attach this printer to CUPS and set it to the default printer.
+### Container Image
 
-## Installation
+The container image is performs full installation when the container starts. 
 
-As for installing the software, the best way of installing this is to use the Dockerfile provided in this repository. This will build the image and run the container. The steps for this are as follows:
+As long as the Dymo Labelwriter 450 is accessible to the container environment, the container should immediately attach this printer to CUPS and set it to the default printer.
+
+### Installation
+
+The best way to installing this is to use the included [dockerfile](Dockerfile), which will build the image and run a container from the resulting image.
+
+#### Example Installation: Raspberry Pi Zero W
 
 1. Clone the repository to the Raspberry Pi Zero W.
 2. Run the following command to build the image and run the container, using the docker-compose.yml file, the --build will force the building of the container using the Dockerfile:
