@@ -72,7 +72,7 @@ ENV PRINTER_MODEL=lp450 \
     PRINTER_CUPS_DEVICE_URI=""
 
 RUN echo "Updating avahi config for dns-sd printer discovery..." \
-    sed -i -E "s#"
+    sed -i 's/#enable-dbus=yes/enable-dbus=no/g' /etc/avahi/avahi-daemon.conf
 
 RUN chmod +x /setup.sh
 
