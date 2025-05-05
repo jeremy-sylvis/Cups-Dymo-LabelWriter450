@@ -65,6 +65,8 @@ COPY --chown=root:lp cupsd.conf /etc/cups/cupsd.conf
 
 COPY . .
 
+ENV PRINTER_MODEL=lp450
+
 RUN chmod +x /setup.sh
 
 # Run CUPS in the foreground

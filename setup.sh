@@ -9,7 +9,7 @@ lpinfo -v
 
 echo "Adding Printer to Cups"
 # Add the printer
-lpadmin -p dymo -v usb://DYMO/LabelWriter%20450?serial=01010112345600 -P /usr/share/cups/model/lw450.ppd
+lpadmin -p dymo -v usb://DYMO/LabelWriter%20450?serial=01010112345600 -P /usr/share/cups/model/${PRINTER_MODEL}.ppd
 
 echo "Print Cups Stats"
 # Stats
